@@ -38,6 +38,12 @@ public class Usuario implements UserDetails {
 	private String password;
 	
 	private PerfilUsuario perfil;
+	
+	public Usuario(String email, String password, PerfilUsuario perfil) {
+		this.email = email;
+		this.password = password;
+		this.perfil = perfil;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -51,6 +57,11 @@ public class Usuario implements UserDetails {
 	@Override
 	public String getUsername() {
 		return email;
+	}
+	
+	@Override
+	public String getPassword() {
+		return password;
 	}
 	
 	@Override
@@ -72,5 +83,7 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	
 
 }
