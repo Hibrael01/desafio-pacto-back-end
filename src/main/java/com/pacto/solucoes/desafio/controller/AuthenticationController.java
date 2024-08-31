@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pacto.solucoes.desafio.configuration.security.TokenService;
 import com.pacto.solucoes.desafio.entities.Usuario;
 import com.pacto.solucoes.desafio.entities.DTO.AuthenticationDTO;
 import com.pacto.solucoes.desafio.entities.DTO.RegisterDTO;
@@ -27,13 +28,18 @@ public class AuthenticationController {
 	@Autowired
 	private UsuarioRepository repository;
 	
+	@Autowired
+	private TokenService tokenService;
+	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
 		
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 		
-		return ResponseEntity.ok().build();
+		var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+		
+		return ResponseEntity.ok(token);
 	}
 	
 	@PostMapping("/register")
@@ -43,7 +49,7 @@ public class AuthenticationController {
 		}
 		
 		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-		Usuario novoUsuario = new Usuario(data.email(), encryptedPassword, data.perfil());
+		Usuario novoUsuario = new Usuario(data.nome(), data.email(), encryptedPassword, data.perfil());
 		
 		this.repository.save(novoUsuario);
 		

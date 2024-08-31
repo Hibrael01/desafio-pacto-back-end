@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.pacto.solucoes.desafio.entities.enums.PerfilUsuario;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,17 +30,23 @@ public class Usuario implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
+	@Column(name="ID")
 	private String id;
 	
+	@Column(name="NOME", length = 60)
 	private String nome;
 	
+	@Column(name="EMAIL", length = 90, nullable = false, unique = true)
 	private String email;
 	
+	@Column(name="PASSWORD", length = 60, nullable = false)
 	private String password;
 	
+	@Column(name = "PERFIL", nullable = false)
 	private PerfilUsuario perfil;
 	
-	public Usuario(String email, String password, PerfilUsuario perfil) {
+	public Usuario(String nome, String email, String password, PerfilUsuario perfil) {
+		this.nome = nome;
 		this.email = email;
 		this.password = password;
 		this.perfil = perfil;
