@@ -1,0 +1,50 @@
+<app-toolbar></app-toolbar>
+<div id="mainContainer">
+
+    <span id="title">
+        Novo Cadastro
+    </span>
+
+    <form [formGroup]="dadosUsuario" id="register-container">
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome" formControlName="nome" required type="text" maxlength="60">
+        </mat-form-field>
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="exemplo@gmail.com" formControlName="email" required type="email" maxlength="90">
+        </mat-form-field>
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" required maxlength="60">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Tipo de Usuário</mat-label>
+            <mat-select [(value)]="usuario.perfil" formControlName="perfil" required>
+                <mat-option value="ADMINISTRADORES">Administrador</mat-option>
+                <mat-option value="COLABORADORES">Colaborador</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="buttons-section">
+            <button mat-raised-button color="primary" (click)="finalizarCadastroNovoUsuario()">
+                Concluir Cadastro
+                <mat-icon>done</mat-icon>
+            </button>
+
+            <button mat-raised-button color="accent" (click)="voltarHome()">
+                Voltar
+                <mat-icon>home</mat-icon>
+            </button>
+        </div>
+
+    </form>
+
+</div>

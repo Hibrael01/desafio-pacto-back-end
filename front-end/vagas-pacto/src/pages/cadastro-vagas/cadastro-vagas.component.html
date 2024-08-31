@@ -1,0 +1,24 @@
+<app-toolbar></app-toolbar>
+<div id="mainContainer">
+
+    <span id="title">
+        Cadastrar Vaga
+    </span>
+
+    <form [formGroup]="dadosVaga" id="register-container">
+
+        <div class="buttons-section">
+            <button mat-raised-button color="primary" (click)="cadastrarVaga()">
+                Cadastrar
+                <mat-icon>done</mat-icon>
+            </button>
+
+            <button mat-raised-button color="accent" (click)="fazerLogout()">
+                Sair
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+
+    </form>
+
+</div>

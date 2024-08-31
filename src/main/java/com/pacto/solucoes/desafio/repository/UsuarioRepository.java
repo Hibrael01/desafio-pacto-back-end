@@ -8,5 +8,6 @@ import com.pacto.solucoes.desafio.entities.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
 	UserDetails findByEmail(String email);
-	
+
+	Usuario findUsuarioByEmail(String email);
 }

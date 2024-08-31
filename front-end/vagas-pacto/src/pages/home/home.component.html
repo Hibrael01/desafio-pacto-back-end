@@ -1,0 +1,33 @@
+<app-toolbar></app-toolbar>
+<div id="mainContainer">
+
+    <form [formGroup]="dadosLogin" id="register-container">
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="exemplo@gmail.com" formControlName="email" required type="email" maxlength="90">
+        </mat-form-field>
+
+        <mat-form-field class="form-field-basic">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" required maxlength="60">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <div class="buttons-section">
+            <button mat-raised-button color="primary" (click)="realizarLogin()">
+                Login
+                <mat-icon>login</mat-icon>
+            </button>
+
+            <button mat-raised-button color="accent" (click)="iniciarCadastro()">
+                Cadastrar
+                <mat-icon>person_add</mat-icon>
+            </button>
+        </div>
+
+    </form>
+
+</div>

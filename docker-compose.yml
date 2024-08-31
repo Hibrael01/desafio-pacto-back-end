@@ -16,7 +16,7 @@ services:
       - pacto-network
   
   api:
-    image: hibrael/api-vagas:1.2
+    image: hibrael/api-vagas:1.3
     container_name: apiPacto
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pactoSolucoes
@@ -26,6 +26,14 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    networks:
+      - pacto-network
+
+  frontend:
+    image: hibrael/front-end-vagas:1.0
+    container_name: frontendPacto
+    ports:
+      - "80:80"
     networks:
       - pacto-network
 

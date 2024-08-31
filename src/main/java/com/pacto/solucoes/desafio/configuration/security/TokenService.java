@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.management.RuntimeErrorException;
 
@@ -26,11 +28,15 @@ public class TokenService {
 	public String generateToken(Usuario usuario) {
 		try {
 			
+			Map<String, String> payload = new HashMap<String, String>();
+			payload.put("ROLE", usuario.getPerfil().toString());
+			
 			Algorithm algorithm = Algorithm.HMAC256(secret);
 			
 			String token = JWT.create()
 					.withIssuer("login-auth-api")
 					.withSubject(usuario.getEmail())
+					.withPayload(payload)
 					.withExpiresAt(this.generateExpirationTime())
 					.sign(algorithm);
 			

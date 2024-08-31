@@ -1,0 +1,4 @@
+export enum PerfilUsuario {
+    'ADMINISTRADORES' = 'ADMINISTRADORES',
+    'COLABORADORES' = 'COLABORADORES'
+}
