@@ -53,7 +53,7 @@
 >
 > - Imagem (Esquema de Banco de Dados Criado):
 >
->   ![](C:\Users\hibra\AppData\Roaming\Typora\typora-user-images\image-20240831171402493.png)
+>   ![](assets/Diagrama ER.png)
 
 
 
@@ -73,7 +73,8 @@
 >    9. Uma vez no terminal digite docker-compose up
 >    10. Aguarde algum tempo, caso tenha o Docker Desktop instalado verifique se os 3 contêineres executando o Banco de Dados, Api e frontend estão executando. 
 >    11. Caso não tenha o Docker Desktop, em um novo terminal execute o comando docker ps. Deverá receber o seguinte retorno:
->        1. ![image-20240831172934296](C:\Users\hibra\AppData\Roaming\Typora\typora-user-images\image-20240831172934296.png)
+>        
+>        ![assets/Resultado Prompt Aplicação Funcionando.png](C:\Users\hibra\AppData\Roaming\Typora\typora-user-images\image-20240831172934296.png)
 >    12. Se tiver o resultado acima, basta abrir um navegador e digitar http://localhost/ e você será redirecionado para a tela inicial da aplicação
 >    13. Observações finais. Toda a API está devidamente finalizada, porém, as telas de listagem de vagas, cadastro de vagas e candidaturas não foram finalizadas. Para visualizar e testar a API, basta realizar o download do software [Insomnia](https://insomnia.rest/download)  e então importar o arquivo API Vagas Pacto.json para o mesmo.
 >
